@@ -1,0 +1,205 @@
+﻿@model IEnumerable<Order.Models.Restourant>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Tables</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Tables</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-lg-12 col-12 text-right">
+                    <a class="btn btn-sm btn-neutral" href="@Url.Action("CreateRestorant", "AdminHome")">Yeni Restorna Ekle</a>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                    <h3 class="mb-0 color">Restranlar</h3>
+                </div>
+                <!-- Light table -->
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col" class="sort" data-sort="name">Restoran İsmi</th>
+                                <th scope="col" class="sort" data-sort="budget">Başlangıç Tarihi</th>
+                                <th scope="col" class="sort" data-sort="status">Bitiş Tarihi</th>
+
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+
+                                    <td class="budget">
+                                        @item.Name
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-dot mr-4">
+                                            <i class="bg-warning"></i>
+                                            <span class="status">@item.Start_At</span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-dot mr-4">
+                                            <i class="bg-warning"></i>
+                                            <span class="status">@item.finish_At</span>
+                                        </span>
+                                    </td>
+
+
+                                    <td class="text-right">
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                <a class="dropdown-item" href="@Url.Action("DeleteRestoran","AdminHome", new {id = item.ID })">Sil</a>
+                                                <a class="dropdown-item" href="#" data-toggle="modal" onClick="DeletePopup(@item.Name,@item.ID)">Popup</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-4">
+
+        <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+            <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="modal-title-default">Silmek istediginizden emin misiniz</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="myModalTitle">
+
+                    </div>
+                    <div class="modal-footer">
+                        <a id="DeleteRestorant" onclick="delte()" class="btn btn-primary">Save changes</a>
+                        <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Silme İşlemi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               Silmek İstediğinizden Emin misiniz
+            </div>
+            <div class="modal-footer" id="deleteconfirm">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<script type="text/javascript">
+
+
+
+    function DeletePopup(title, id) {
+        $('#myModalTitle').html("Silmek İstediğinizden Enim misiniz ! " + title);
+        document.getElementById("DeleteRestorant").href = "AdminHome/DeleteRestoran/" + id;
+
+        $('#modal-default').modal('show');
+
+    }
+
+
+
+
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+
+@if (TempData["success"] != null)
+{
+
+    <script type="text/javascript">
+        $(function () {
+            $.notify("Silmek İstediğiniz Restoran Başarı ile Silinmiştir", "success"
+            );
+
+
+            // Click on the checkbox
+        });
+    </script>
+}
+
+@if (TempData["error"] != null)
+{
+   
+}

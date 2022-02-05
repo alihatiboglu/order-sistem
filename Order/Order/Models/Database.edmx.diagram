@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6cb47ab5c54844d59a4f68287f80fdb0" Name="Diagram1">
+        <EntityTypeShape EntityType="OrdersModel.Category" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.ExstraIngredient" Width="1.5" PointX="7.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Ingredient" Width="1.5" PointX="7.5" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Language" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.OrderIngredient" Width="1.5" PointX="9.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Order" Width="1.5" PointX="10.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Product" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Restourant" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.SubCategory" Width="1.5" PointX="8.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Table" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Translate" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.User" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.UserType" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrdersModel.Value" Width="1.5" PointX="6" PointY="6.625" IsExpanded="true" />
+        <AssociationConnector Association="OrdersModel.FK_Category_Restourant" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_Products_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_SubCategory_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_EkstraOrders_ExstraIngredients" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_ExstraIngredients_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_Ingredients_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_OrderIngredients_Ingredients" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_Language_Restourant" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_Translate_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_EkstraOrders_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_EkstraOrders_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_EkstraOrders_Restourant" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_EkstraOrders_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_Orders_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_Orders_Restourant" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_Orders_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_Products_Restourant" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_SubCategory_Restourant" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_Table_Restourant" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_Users_Restourant" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_UserType_Restourant" ManuallyRouted="false" />
+        <AssociationConnector Association="OrdersModel.FK_Translate_Value" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

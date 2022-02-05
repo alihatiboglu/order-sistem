@@ -1,0 +1,1244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OrdersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="RestourantID" Type="int" />
+          <Property Name="Image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ExstraIngredients">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Price" Type="nvarchar(max)" />
+          <Property Name="ProductID" Type="int" />
+        </EntityType>
+        <EntityType Name="Ingredients">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="ProductID" Type="int" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="RestourantID" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderIngredients">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="ExstraIngredientID" Type="int" />
+          <Property Name="Exstra" Type="nvarchar(max)" />
+          <Property Name="TableID" Type="int" />
+          <Property Name="RestourantID" Type="int" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="IngredientID" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="TableID" Type="int" />
+          <Property Name="RestourantID" Type="int" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="SubCategoryID" Type="int" />
+          <Property Name="RestourantID" Type="int" />
+          <Property Name="Price" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Restourant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Start_At" Type="date" />
+          <Property Name="finish_At" Type="date" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="RestourantID" Type="int" />
+          <Property Name="Image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="nvarchar(max)" />
+          <Property Name="RestourantID" Type="int" />
+          <Property Name="Booked" Type="int" />
+        </EntityType>
+        <EntityType Name="Translate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ValueID" Type="int" />
+          <Property Name="LanguageID" Type="int" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="SurName" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="UserTypeID" Type="int" />
+          <Property Name="RestourantID" Type="int" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="50" />
+          <Property Name="RestourantID" Type="int" />
+        </EntityType>
+        <EntityType Name="Value">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="RestaurantID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Category_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EkstraOrders_ExstraIngredients">
+          <End Role="ExstraIngredients" Type="Self.ExstraIngredients" Multiplicity="0..1" />
+          <End Role="OrderIngredients" Type="Self.OrderIngredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExstraIngredients">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderIngredients">
+              <PropertyRef Name="ExstraIngredientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EkstraOrders_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="OrderIngredients" Type="Self.OrderIngredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderIngredients">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EkstraOrders_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="OrderIngredients" Type="Self.OrderIngredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderIngredients">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EkstraOrders_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="OrderIngredients" Type="Self.OrderIngredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderIngredients">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EkstraOrders_Table">
+          <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+          <End Role="OrderIngredients" Type="Self.OrderIngredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderIngredients">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExstraIngredients_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="ExstraIngredients" Type="Self.ExstraIngredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExstraIngredients">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingredients_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ingredients">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Language_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="Language" Type="Self.Language" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Language">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderIngredients_Ingredients">
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="0..1" />
+          <End Role="OrderIngredients" Type="Self.OrderIngredients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredients">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderIngredients">
+              <PropertyRef Name="IngredientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Table">
+          <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategory_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategory_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="Table" Type="Self.Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Table">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Translate_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="0..1" />
+          <End Role="Translate" Type="Self.Translate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Translate">
+              <PropertyRef Name="LanguageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Translate_Value">
+          <End Role="Value" Type="Self.Value" Multiplicity="0..1" />
+          <End Role="Translate" Type="Self.Translate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Value">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Translate">
+              <PropertyRef Name="ValueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserType_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="UserType" Type="Self.UserType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserType">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrdersModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExstraIngredients" EntityType="Self.ExstraIngredients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ingredients" EntityType="Self.Ingredients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderIngredients" EntityType="Self.OrderIngredients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restourant" EntityType="Self.Restourant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Translate" EntityType="Self.Translate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Value" EntityType="Self.Value" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Category_Restourant" Association="Self.FK_Category_Restourant">
+            <End Role="Restourant" EntitySet="Restourant" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EkstraOrders_ExstraIngredients" Association="Self.FK_EkstraOrders_ExstraIngredients">
+            <End Role="ExstraIngredients" EntitySet="ExstraIngredients" />
+            <End Role="OrderIngredients" EntitySet="OrderIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EkstraOrders_Orders" Association="Self.FK_EkstraOrders_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderIngredients" EntitySet="OrderIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EkstraOrders_Products" Association="Self.FK_EkstraOrders_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderIngredients" EntitySet="OrderIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EkstraOrders_Restourant" Association="Self.FK_EkstraOrders_Restourant">
+            <End Role="Restourant" EntitySet="Restourant" />
+            <End Role="OrderIngredients" EntitySet="OrderIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EkstraOrders_Table" Association="Self.FK_EkstraOrders_Table">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="OrderIngredients" EntitySet="OrderIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExstraIngredients_Products" Association="Self.FK_ExstraIngredients_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ExstraIngredients" EntitySet="ExstraIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingredients_Products" Association="Self.FK_Ingredients_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Ingredients" EntitySet="Ingredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Language_Restourant" Association="Self.FK_Language_Restourant">
+            <End Role="Restourant" EntitySet="Restourant" />
+            <End Role="Language" EntitySet="Language" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderIngredients_Ingredients" Association="Self.FK_OrderIngredients_Ingredients">
+            <End Role="Ingredients" EntitySet="Ingredients" />
+            <End Role="OrderIngredients" EntitySet="OrderIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Products" Association="Self.FK_Orders_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Restourant" Association="Self.FK_Orders_Restourant">
+            <End Role="Restourant" EntitySet="Restourant" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Table" Association="Self.FK_Orders_Table">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Restourant" Association="Self.FK_Products_Restourant">
+            <End Role="Restourant" EntitySet="Restourant" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_Category" Association="Self.FK_SubCategory_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="SubCategory" EntitySet="SubCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_Restourant" Association="Self.FK_SubCategory_Restourant">
+            <End Role="Restourant" EntitySet="Restourant" />
+            <End Role="SubCategory" EntitySet="SubCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Restourant" Association="Self.FK_Table_Restourant">
+            <End Role="Restourant" EntitySet="Restourant" />
+            <End Role="Table" EntitySet="Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Translate_Language" Association="Self.FK_Translate_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Translate" EntitySet="Translate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Translate_Value" Association="Self.FK_Translate_Value">
+            <End Role="Value" EntitySet="Value" />
+            <End Role="Translate" EntitySet="Translate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Restourant" Association="Self.FK_Users_Restourant">
+            <End Role="Restourant" EntitySet="Restourant" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserType_Restourant" Association="Self.FK_UserType_Restourant">
+            <End Role="Restourant" EntitySet="Restourant" />
+            <End Role="UserType" EntitySet="UserType" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OrdersModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RestourantID" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Restourant" Relationship="Self.FK_Category_Restourant" FromRole="Category" ToRole="Restourant" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Category" FromRole="Category" ToRole="Products" />
+          <NavigationProperty Name="SubCategories" Relationship="Self.FK_SubCategory_Category" FromRole="Category" ToRole="SubCategory" />
+        </EntityType>
+        <EntityType Name="ExstraIngredient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductID" Type="Int32" />
+          <NavigationProperty Name="OrderIngredients" Relationship="Self.FK_EkstraOrders_ExstraIngredients" FromRole="ExstraIngredients" ToRole="OrderIngredients" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ExstraIngredients_Products" FromRole="ExstraIngredients" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Ingredient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductID" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Ingredients_Products" FromRole="Ingredients" ToRole="Products" />
+          <NavigationProperty Name="OrderIngredients" Relationship="Self.FK_OrderIngredients_Ingredients" FromRole="Ingredients" ToRole="OrderIngredients" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RestourantID" Type="Int32" />
+          <NavigationProperty Name="Restourant" Relationship="Self.FK_Language_Restourant" FromRole="Language" ToRole="Restourant" />
+          <NavigationProperty Name="Translates" Relationship="Self.FK_Translate_Language" FromRole="Language" ToRole="Translate" />
+        </EntityType>
+        <EntityType Name="OrderIngredient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="ExstraIngredientID" Type="Int32" />
+          <Property Name="Exstra" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TableID" Type="Int32" />
+          <Property Name="RestourantID" Type="Int32" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="IngredientID" Type="Int32" />
+          <NavigationProperty Name="ExstraIngredient" Relationship="Self.FK_EkstraOrders_ExstraIngredients" FromRole="OrderIngredients" ToRole="ExstraIngredients" />
+          <NavigationProperty Name="Ingredient" Relationship="Self.FK_OrderIngredients_Ingredients" FromRole="OrderIngredients" ToRole="Ingredients" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_EkstraOrders_Orders" FromRole="OrderIngredients" ToRole="Orders" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_EkstraOrders_Products" FromRole="OrderIngredients" ToRole="Products" />
+          <NavigationProperty Name="Restourant" Relationship="Self.FK_EkstraOrders_Restourant" FromRole="OrderIngredients" ToRole="Restourant" />
+          <NavigationProperty Name="Table" Relationship="Self.FK_EkstraOrders_Table" FromRole="OrderIngredients" ToRole="Table" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="TableID" Type="Int32" />
+          <Property Name="RestourantID" Type="Int32" />
+          <NavigationProperty Name="OrderIngredients" Relationship="Self.FK_EkstraOrders_Orders" FromRole="Orders" ToRole="OrderIngredients" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Orders_Products" FromRole="Orders" ToRole="Products" />
+          <NavigationProperty Name="Restourant" Relationship="Self.FK_Orders_Restourant" FromRole="Orders" ToRole="Restourant" />
+          <NavigationProperty Name="Table" Relationship="Self.FK_Orders_Table" FromRole="Orders" ToRole="Table" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="SubCategoryID" Type="Int32" />
+          <Property Name="RestourantID" Type="Int32" />
+          <Property Name="Price" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Products_Category" FromRole="Products" ToRole="Category" />
+          <NavigationProperty Name="ExstraIngredients" Relationship="Self.FK_ExstraIngredients_Products" FromRole="Products" ToRole="ExstraIngredients" />
+          <NavigationProperty Name="Ingredients" Relationship="Self.FK_Ingredients_Products" FromRole="Products" ToRole="Ingredients" />
+          <NavigationProperty Name="OrderIngredients" Relationship="Self.FK_EkstraOrders_Products" FromRole="Products" ToRole="OrderIngredients" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Products" FromRole="Products" ToRole="Orders" />
+          <NavigationProperty Name="Restourant" Relationship="Self.FK_Products_Restourant" FromRole="Products" ToRole="Restourant" />
+        </EntityType>
+        <EntityType Name="Restourant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Start_At" Type="DateTime" Precision="0" />
+          <Property Name="finish_At" Type="DateTime" Precision="0" />
+          <Property Name="Active" Type="Int32" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_Category_Restourant" FromRole="Restourant" ToRole="Category" />
+          <NavigationProperty Name="Languages" Relationship="Self.FK_Language_Restourant" FromRole="Restourant" ToRole="Language" />
+          <NavigationProperty Name="OrderIngredients" Relationship="Self.FK_EkstraOrders_Restourant" FromRole="Restourant" ToRole="OrderIngredients" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Restourant" FromRole="Restourant" ToRole="Orders" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Restourant" FromRole="Restourant" ToRole="Products" />
+          <NavigationProperty Name="SubCategories" Relationship="Self.FK_SubCategory_Restourant" FromRole="Restourant" ToRole="SubCategory" />
+          <NavigationProperty Name="Tables" Relationship="Self.FK_Table_Restourant" FromRole="Restourant" ToRole="Table" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Restourant" FromRole="Restourant" ToRole="Users" />
+          <NavigationProperty Name="UserTypes" Relationship="Self.FK_UserType_Restourant" FromRole="Restourant" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="RestourantID" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_SubCategory_Category" FromRole="SubCategory" ToRole="Category" />
+          <NavigationProperty Name="Restourant" Relationship="Self.FK_SubCategory_Restourant" FromRole="SubCategory" ToRole="Restourant" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RestourantID" Type="Int32" />
+          <Property Name="Booked" Type="Int32" />
+          <NavigationProperty Name="OrderIngredients" Relationship="Self.FK_EkstraOrders_Table" FromRole="Table" ToRole="OrderIngredients" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Table" FromRole="Table" ToRole="Orders" />
+          <NavigationProperty Name="Restourant" Relationship="Self.FK_Table_Restourant" FromRole="Table" ToRole="Restourant" />
+        </EntityType>
+        <EntityType Name="Translate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ValueID" Type="Int32" />
+          <Property Name="LanguageID" Type="Int32" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Language" Relationship="Self.FK_Translate_Language" FromRole="Translate" ToRole="Language" />
+          <NavigationProperty Name="Value1" Relationship="Self.FK_Translate_Value" FromRole="Translate" ToRole="Value" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SurName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserTypeID" Type="Int32" />
+          <Property Name="RestourantID" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Restourant" Relationship="Self.FK_Users_Restourant" FromRole="Users" ToRole="Restourant" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RestourantID" Type="Int32" />
+          <NavigationProperty Name="Restourant" Relationship="Self.FK_UserType_Restourant" FromRole="UserType" ToRole="Restourant" />
+        </EntityType>
+        <EntityType Name="Value">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RestaurantID" Type="Int32" />
+          <NavigationProperty Name="Translates" Relationship="Self.FK_Translate_Value" FromRole="Value" ToRole="Translate" />
+        </EntityType>
+        <Association Name="FK_Category_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategory_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EkstraOrders_ExstraIngredients">
+          <End Role="ExstraIngredients" Type="Self.ExstraIngredient" Multiplicity="0..1" />
+          <End Role="OrderIngredients" Type="Self.OrderIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExstraIngredients">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderIngredients">
+              <PropertyRef Name="ExstraIngredientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExstraIngredients_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ExstraIngredients" Type="Self.ExstraIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExstraIngredients">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingredients_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Ingredients" Type="Self.Ingredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ingredients">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderIngredients_Ingredients">
+          <End Role="Ingredients" Type="Self.Ingredient" Multiplicity="0..1" />
+          <End Role="OrderIngredients" Type="Self.OrderIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredients">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderIngredients">
+              <PropertyRef Name="IngredientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Language_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="Language" Type="Self.Language" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Language">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Translate_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="0..1" />
+          <End Role="Translate" Type="Self.Translate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Translate">
+              <PropertyRef Name="LanguageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EkstraOrders_Orders">
+          <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderIngredients" Type="Self.OrderIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderIngredients">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EkstraOrders_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="OrderIngredients" Type="Self.OrderIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderIngredients">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EkstraOrders_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="OrderIngredients" Type="Self.OrderIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderIngredients">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EkstraOrders_Table">
+          <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+          <End Role="OrderIngredients" Type="Self.OrderIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderIngredients">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Products">
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Table">
+          <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="TableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategory_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="Table" Type="Self.Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Table">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserType_Restourant">
+          <End Role="Restourant" Type="Self.Restourant" Multiplicity="0..1" />
+          <End Role="UserType" Type="Self.UserType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restourant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserType">
+              <PropertyRef Name="RestourantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Translate_Value">
+          <End Role="Value" Type="Self.Value" Multiplicity="0..1" />
+          <End Role="Translate" Type="Self.Translate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Value">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Translate">
+              <PropertyRef Name="ValueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrdersEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="ExstraIngredients" EntityType="Self.ExstraIngredient" />
+          <EntitySet Name="Ingredients" EntityType="Self.Ingredient" />
+          <EntitySet Name="Languages" EntityType="Self.Language" />
+          <EntitySet Name="OrderIngredients" EntityType="Self.OrderIngredient" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Restourants" EntityType="Self.Restourant" />
+          <EntitySet Name="SubCategories" EntityType="Self.SubCategory" />
+          <EntitySet Name="Tables" EntityType="Self.Table" />
+          <EntitySet Name="Translates" EntityType="Self.Translate" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <EntitySet Name="Values" EntityType="Self.Value" />
+          <AssociationSet Name="FK_Category_Restourant" Association="Self.FK_Category_Restourant">
+            <End Role="Restourant" EntitySet="Restourants" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Category" Association="Self.FK_Products_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_Category" Association="Self.FK_SubCategory_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="SubCategory" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EkstraOrders_ExstraIngredients" Association="Self.FK_EkstraOrders_ExstraIngredients">
+            <End Role="ExstraIngredients" EntitySet="ExstraIngredients" />
+            <End Role="OrderIngredients" EntitySet="OrderIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExstraIngredients_Products" Association="Self.FK_ExstraIngredients_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ExstraIngredients" EntitySet="ExstraIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingredients_Products" Association="Self.FK_Ingredients_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Ingredients" EntitySet="Ingredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderIngredients_Ingredients" Association="Self.FK_OrderIngredients_Ingredients">
+            <End Role="Ingredients" EntitySet="Ingredients" />
+            <End Role="OrderIngredients" EntitySet="OrderIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Language_Restourant" Association="Self.FK_Language_Restourant">
+            <End Role="Restourant" EntitySet="Restourants" />
+            <End Role="Language" EntitySet="Languages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Translate_Language" Association="Self.FK_Translate_Language">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="Translate" EntitySet="Translates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EkstraOrders_Orders" Association="Self.FK_EkstraOrders_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderIngredients" EntitySet="OrderIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EkstraOrders_Products" Association="Self.FK_EkstraOrders_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderIngredients" EntitySet="OrderIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EkstraOrders_Restourant" Association="Self.FK_EkstraOrders_Restourant">
+            <End Role="Restourant" EntitySet="Restourants" />
+            <End Role="OrderIngredients" EntitySet="OrderIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EkstraOrders_Table" Association="Self.FK_EkstraOrders_Table">
+            <End Role="Table" EntitySet="Tables" />
+            <End Role="OrderIngredients" EntitySet="OrderIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Products" Association="Self.FK_Orders_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Restourant" Association="Self.FK_Orders_Restourant">
+            <End Role="Restourant" EntitySet="Restourants" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Table" Association="Self.FK_Orders_Table">
+            <End Role="Table" EntitySet="Tables" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Restourant" Association="Self.FK_Products_Restourant">
+            <End Role="Restourant" EntitySet="Restourants" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_Restourant" Association="Self.FK_SubCategory_Restourant">
+            <End Role="Restourant" EntitySet="Restourants" />
+            <End Role="SubCategory" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Restourant" Association="Self.FK_Table_Restourant">
+            <End Role="Restourant" EntitySet="Restourants" />
+            <End Role="Table" EntitySet="Tables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Restourant" Association="Self.FK_Users_Restourant">
+            <End Role="Restourant" EntitySet="Restourants" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserType_Restourant" Association="Self.FK_UserType_Restourant">
+            <End Role="Restourant" EntitySet="Restourants" />
+            <End Role="UserType" EntitySet="UserTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Translate_Value" Association="Self.FK_Translate_Value">
+            <End Role="Value" EntitySet="Values" />
+            <End Role="Translate" EntitySet="Translates" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OrdersModelStoreContainer" CdmEntityContainer="OrdersEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="OrdersModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RestourantID" ColumnName="RestourantID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExstraIngredients">
+            <EntityTypeMapping TypeName="OrdersModel.ExstraIngredient">
+              <MappingFragment StoreEntitySet="ExstraIngredients">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ingredients">
+            <EntityTypeMapping TypeName="OrdersModel.Ingredient">
+              <MappingFragment StoreEntitySet="Ingredients">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="OrdersModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RestourantID" ColumnName="RestourantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderIngredients">
+            <EntityTypeMapping TypeName="OrdersModel.OrderIngredient">
+              <MappingFragment StoreEntitySet="OrderIngredients">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ExstraIngredientID" ColumnName="ExstraIngredientID" />
+                <ScalarProperty Name="Exstra" ColumnName="Exstra" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+                <ScalarProperty Name="RestourantID" ColumnName="RestourantID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="OrdersModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+                <ScalarProperty Name="RestourantID" ColumnName="RestourantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="OrdersModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="RestourantID" ColumnName="RestourantID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restourants">
+            <EntityTypeMapping TypeName="OrdersModel.Restourant">
+              <MappingFragment StoreEntitySet="Restourant">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Start_At" ColumnName="Start_At" />
+                <ScalarProperty Name="finish_At" ColumnName="finish_At" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategories">
+            <EntityTypeMapping TypeName="OrdersModel.SubCategory">
+              <MappingFragment StoreEntitySet="SubCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="RestourantID" ColumnName="RestourantID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="OrdersModel.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="RestourantID" ColumnName="RestourantID" />
+                <ScalarProperty Name="Booked" ColumnName="Booked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Translates">
+            <EntityTypeMapping TypeName="OrdersModel.Translate">
+              <MappingFragment StoreEntitySet="Translate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ValueID" ColumnName="ValueID" />
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="OrdersModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="RestourantID" ColumnName="RestourantID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="OrdersModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserType1" ColumnName="UserType" />
+                <ScalarProperty Name="RestourantID" ColumnName="RestourantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Values">
+            <EntityTypeMapping TypeName="OrdersModel.Value">
+              <MappingFragment StoreEntitySet="Value">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RestaurantID" ColumnName="RestaurantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

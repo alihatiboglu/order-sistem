@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "CreateRestorant";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card-wrapper">
+                <!-- Custom form validation -->
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header">
+                        <h3 class="mb-0">Restoran Ekle</h3>
+                    </div>
+                    <!-- Card body -->
+                    <div class="card-body">
+
+                        <form class="needs-validation" method="post" action="/AdminHome/CreateRestorant" novalidate>
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-control-label" for="validationCustom01">Restoran Adı</label>
+                                    <input type="text" name="Name" id="validationCustom01" class="form-control" required>
+
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-control-label" for="validationCustom02">Başlangıç Tarihi</label>
+                                    <input type="date" class="form-control" name="Start_At" placeholder="Last name" value="Otto" required>
+
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-control-label">Bitiş Tarihi</label>
+                                    <input type="date" class="form-control" name="finish_At" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+
+                                </div>
+
+                            </div>
+
+
+                            <button class="btn btn-primary" type="submit">Ekle</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<button class="btn btn-success hidden" style="display:none;" data-toggle="notify" id="success" data-placement="top" data-align="center" data-type="success" data-icon="ni ni-bell-55">Success</button>
+
+<button class="btn btn-warning hidden" style="display:none;" id="error" data-toggle="sweet-alert" data-sweet-alert="warning">Warning alert</button>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+@if (TempData["success"] != null)
+{
+
+    <script type="text/javascript">
+        $(function () {
+            $.notify("Yeni Restoran Başarı  ile eklenmiştir", "success");
+        
+
+            // Click on the checkbox
+        });
+    </script>
+}
+@if (TempData["error"] != null)
+{
+
+
+    <script type="text/javascript">
+        $(function () {
+            $.notify(TempData["error"], "danger"); // Click on the checkbox
+        });
+    </script>
+}
+
+
+
+
+@if (ViewData["success"] != null)
+{
+    <div class="alert alert-success">@ViewData["success"]</div>
+}
+
+@if (ViewData["error"] != null)
+{
+    <div class="alert alert-error">@ViewData["error"]</div>
+}
